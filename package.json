@@ -1,0 +1,58 @@
+{
+  "name": "realfish-yct",
+  "version": "0.1.4",
+  "description": "Real Fish Youtube Trend Video Crawling",
+  "main": "libs/bundle.js",
+  "types": "libs/bundle.d.ts",
+  "scripts": {
+    "test": "ts-node ./node_modules/jasmine/bin/jasmine --config=jasmine.json",
+    "dev": "nodemon --watch src --delay 1 --exec 'ts-node' ./src/rundev.ts",
+    "cpy:prod": "./node_modules/.bin/cpy ./dist/prod/ ./libs --flat",
+    "release": "npm run cpy:prod",
+    "build:dev": "webpack --config webpack-config/webpack.dev.config.js",
+    "build:prod": "webpack --config webpack-config/webpack.prod.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RealFishDT/RealFishYoutubeTrendCrawling.git"
+  },
+  "keywords": [
+    "youtube",
+    "video",
+    "crawling",
+    "ajax",
+    "json",
+    "extract",
+    "fast",
+    "trend"
+  ],
+  "author": {
+    "name": "Realfish",
+    "email": "realfishdt@gmail.com",
+    "url": "https://realfish-likeview.web.app/"
+  },
+  "engines": {
+    "npm": ">=8.0.0 <9.0.0",
+    "node": ">=16.0.0"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.14",
+    "@types/jasmine": "^4.3.0",
+    "cpy-cli": "^4.2.0",
+    "dts-bundle-webpack": "^1.0.2",
+    "gts": "^3.1.1",
+    "jasmine": "^4.5.0",
+    "nodemon": "^2.0.20",
+    "npm-run-all": "^4.1.5",
+    "source-map-support": "^0.5.21",
+    "ts-loader": "^9.4.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
+}
