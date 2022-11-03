@@ -1,7 +1,12 @@
 import axios from 'axios';
 import * as Types from './types';
-
 export class TrendVideoCrawler {
+  private gl = 'KR';
+  private hl = 'KO';
+  constructor(gl = 'KR', hl = 'KO') {
+    this.gl = gl;
+    this.hl = hl;
+  }
   private async getHtml(gl: string, hl: string) {
     try {
       return await axios.get(
@@ -27,7 +32,7 @@ export class TrendVideoCrawler {
           if (item.tabRenderer) {
             return (
               item.tabRenderer.title &&
-              (item.tabRenderer.title === 'now' ||
+              (item.tabRenderer.title.toLowerCase() === 'now' ||
                 item.tabRenderer.title === '최신')
             );
           }
@@ -93,16 +98,12 @@ export class TrendVideoCrawler {
       }
       return videoRanks;
     } catch (e) {
-      console.log(e);
       throw new Types.CrawlingError(Types.CrawlingErrorCode.InitalData);
     }
   }
 
-  public async execute(
-    gl = 'KR',
-    hl = 'KO'
-  ): Promise<Types.VideoTrendFeedInfos | null> {
-    const result = await this.getHtml(gl, hl);
+  public async execute(): Promise<Types.VideoTrendFeedInfos | null> {
+    const result = await this.getHtml(this.gl, this.hl);
     if (result) {
       const initYoutubeInfo = this.analizeYoutubeTrendFeed(result.data);
       return initYoutubeInfo;
