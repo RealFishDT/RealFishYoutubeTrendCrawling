@@ -6,6 +6,7 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 26000;
 describe('crawling gl=KR hl=KO test', () => {
   it('crawling video', async () => {
     const result = await crawling('KR', 'KO');
+    console.log(result);
     expect(result[0].videoId).toHaveSize('mF6DZTtXRw4'.length);
   });
 });

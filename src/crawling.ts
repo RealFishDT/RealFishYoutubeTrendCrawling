@@ -13,7 +13,7 @@ export class TrendVideoCrawler {
         `https://www.youtube.com/feed/trending?gl=${gl}&hl=${hl}`
       );
     } catch (error) {
-      return null;
+      throw new Types.CrawlingError(Types.CrawlingErrorCode.Unknown);
     }
   }
 
@@ -48,6 +48,8 @@ export class TrendVideoCrawler {
       }
 
       const videoRanks: Types.VideoTrendFeedInfos = [];
+      let videoRankNumber = 1;
+      let shortsRankNumber = 1;
       for (const section of renderSectionContents) {
         const contents = section.itemSectionRenderer.contents[0];
         const type = contents.shelfRenderer.content
@@ -59,7 +61,6 @@ export class TrendVideoCrawler {
         if (type === 'expandedShelfContentsRenderer') {
           const items =
             contents.shelfRenderer.content.expandedShelfContentsRenderer.items;
-          let rank = 1;
           for (const item of items) {
             const result: Types.VideoTrendFeedInfo = {
               videoId: item.videoRenderer.videoId,
@@ -68,10 +69,10 @@ export class TrendVideoCrawler {
               channelId:
                 item.videoRenderer.ownerText.runs[0].navigationEndpoint
                   .browseEndpoint.browseId,
-              rank: rank,
+              rank: videoRankNumber,
               type: 'video',
             };
-            rank += 1;
+            videoRankNumber += 1;
             videoRanks.push(result);
           }
         }
@@ -79,7 +80,6 @@ export class TrendVideoCrawler {
           // shorts case
           const items =
             contents.shelfRenderer.content.horizontalListRenderer.items;
-          let rank = 1;
           for (const item of items) {
             const result: Types.VideoTrendFeedInfo = {
               videoId: item.gridVideoRenderer.videoId,
@@ -88,10 +88,10 @@ export class TrendVideoCrawler {
               channelId:
                 item.gridVideoRenderer.shortBylineText.runs[0]
                   .navigationEndpoint.browseEndpoint.browseId,
-              rank: rank,
+              rank: shortsRankNumber,
               type: 'shorts',
             };
-            rank += 1;
+            shortsRankNumber += 1;
             videoRanks.push(result);
           }
         }
