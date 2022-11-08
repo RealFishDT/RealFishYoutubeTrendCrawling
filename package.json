@@ -1,6 +1,6 @@
 {
   "name": "realfish-yct",
-  "version": "0.1.5",
+  "version": "0.1.9",
   "description": "Real Fish Youtube Trend Video Crawling",
   "main": "libs/bundle.js",
   "types": "libs/bundle.d.ts",

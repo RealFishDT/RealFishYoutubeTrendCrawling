@@ -11,6 +11,12 @@ Real Fish Youtube Trend Video Crawling(RYCT)
 npm i realfish-yct
 ```
 
+## **Fix:**
+
+- video rank duplicated bug fix, "video" type videos first 2 rank1 ,2 <- it's ok
+- bug 3, 4 rank have 1,2 rank number
+- it's fixed, please use 0.1.9 version
+
 ## **Support features:**
 
 - Get On Trend Video List from youtube video web site
@@ -53,7 +59,7 @@ npm i realfish-yct
 - Javascript
 
   ```js
-  const A = require('realfish-yc');
+  const A = require('realfish-yct');
 
   A.crawling().then(h => {
     console.log(h);
@@ -61,7 +67,7 @@ npm i realfish-yct
   ```
 
   ```js
-  const A = require('realfish-yc');
+  const A = require('realfish-yct');
 
   A.crawling('US', 'EN').then(h => {
     console.log(h);
@@ -98,8 +104,6 @@ npm i realfish-yct
       .
       .
       .
-      .
-
     ]
     ```
 
@@ -140,6 +144,44 @@ npm i realfish-yct
 
 - **if you want sorted rank list by type, please use rank and type property**
 - **this module list provide short and video type are mixed list**
+
+- Error Handling
+
+  ```
+    export enum CrawlingErrorCode {
+      Normal,
+      PlayerResponse,
+      InitalData,
+      InitalContinueData,
+      Unknown,
+    }
+
+    export class CrawlingError extends Error {
+      code: CrawlingErrorCode;
+      name = '';
+      constructor(code: CrawlingErrorCode, message?: string) {
+        super(message);
+        this.code = code;
+        this.name = this.constructor.name;
+      }
+    }
+  ```
+
+  - **use try/catch**, CrawlingError class instance is throw in trand module
+    - code is one of CrawlingErrorCode
+
+  ```ts
+    import {crawling, CrawlingError} from 'realfish-yct';
+
+    try {
+      const result = await crawling('US', 'EN');
+    } catch (e) {
+      const error = e as CrawlingError
+      .
+      .
+      .
+    }
+  ```
 
   **Product**
 
