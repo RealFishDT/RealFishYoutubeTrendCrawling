@@ -1,5 +1,6 @@
 const path = require('path');
 const DtsBundleWebpack = require('dts-bundle-webpack');
+const TerserPlugin = require('terser-webpack-plugin');
 module.exports = {
   entry: './src/main.ts',
   module: {
@@ -12,7 +13,7 @@ module.exports = {
     ],
   },
   optimization: {
-    minimize: true,
+    minimizer: [new TerserPlugin({extractComments: false})],
   },
   mode: 'production',
   target: 'node',
