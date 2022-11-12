@@ -9,6 +9,7 @@ export interface VideoTrendFeedInfo {
     title: string;
     channelId: string;
     rank: number;
+    viewCountText: string;
     type: 'shorts' | 'video';
 }
 export type VideoTrendFeedInfos = VideoTrendFeedInfo[];
