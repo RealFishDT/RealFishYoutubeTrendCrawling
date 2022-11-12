@@ -4,6 +4,8 @@ Real Fish Youtube Trend Video Crawling(RYCT)
 
 - **pure crawling youtube video site and public api**
 - **this module do not use youtube/google api, don't worry google api quota**
+- Link: [<ins>On Trend Real time update web page</inds>](https://www.ytontrend.com)
+  - this web page api server is made by this package
 
 ## **Install**
 
@@ -21,13 +23,16 @@ npm i realfish-yct
 
 - Get On Trend Video List from youtube video web site
 - region and language support
-  support languages are "KO", "EN", ISO 639-1, CAPITAL CASE
+  support languages are "KO", "EN", "ES" ISO 639-1, CAPITAL CASE
   support region are ISO 3166-1 alpha-2 that youtube support, CAPITAL CASE
 - this RYCT don't use headless browser and selector library like cheerio or scrapy, just use ajax, so fast and light
 - this works on nodejs and electron
   - unfortunately, not support common modern browser because CORS or SOP error
 - Typescript support
 - async/await support
+
+- **new feature, support ES language**
+- **new feature, video count text is added**
 
 ## **Dependency:**
 
@@ -42,7 +47,7 @@ npm i realfish-yct
       - on trend(인급동) video ranks list is diffrent by gl
       - each region have each "on trend videos"
       - it affect "rank" property
-    - hl: lanugage code default "KO", it's only support "KO", "EN"
+    - hl: lanugage code default "KO", it's only support "KO", "EN", "ES"
       - if you use other language code, this module can not extract video list from youtube
 - Typescript
 
@@ -87,6 +92,7 @@ npm i realfish-yct
     [
       {
         "videoId": "BKciq4cmElM",
+        "viewCountText": "4,370,734 views",
         "thumbnail": "https://i.ytimg.com/vi/BKciq4cmElM/hqdefault.jpg?sqp=-oaymwEiCNIBEHZIWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLBu5dbY-85_7lm8DyDZ3NRPLDFTMg",
         "title": "How to Teach Your Dog to Play Dead",
         "channelId": "UCLjhnUSXzC0F1WU70uQoYcA",
@@ -95,6 +101,7 @@ npm i realfish-yct
       },
       {
         "videoId": "BKciq4cmElM",
+        "viewCountText": "4,370,734 views",
         "thumbnail": "https://i.ytimg.com/vi/BKciq4cmElM/hqdefault.jpg?sqp=-oaymwEiCNIBEHZIWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLBu5dbY-85_7lm8DyDZ3NRPLDFTMg",
         "title": "How to Teach Your Dog to Play Dead",
         "channelId": "UCLjhnUSXzC0F1WU70uQoYcA",
@@ -111,6 +118,7 @@ npm i realfish-yct
     ```json
     [{
       "videoId": "BKciq4cmElM",
+      "viewCountText": "4,370,734 views",
       "thumbnail": "https://i.ytimg.com/vi/BKciq4cmElM/hqdefault.jpg?sqp=-oaymwEiCNIBEHZIWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLBu5dbY-85_7lm8DyDZ3NRPLDFTMg",
       "title": "How to Teach Your Dog to Play Dead",
       "channelId": "UCLjhnUSXzC0F1WU70uQoYcA",
@@ -119,6 +127,7 @@ npm i realfish-yct
     },
     {
       "videoId": "BKciq4cmElM",
+      "viewCountText": "4,370,734 views",
       "thumbnail": "https://i.ytimg.com/vi/BKciq4cmElM/hqdefault.jpg?sqp=-oaymwEiCNIBEHZIWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLBu5dbY-85_7lm8DyDZ3NRPLDFTMg",
       "title": "How to Teach Your Dog to Play Dead",
       "channelId": "UCLjhnUSXzC0F1WU70uQoYcA",
@@ -135,6 +144,7 @@ npm i realfish-yct
 
   - videoId: youtube video id
   - thumbnail: video thumbnail url
+  - viewCountText: video views count text-> full video view count text
   - title: video title
   - channelId: this video owner channel id
   - rank: video rank in On Trend Videos(인급동)
@@ -185,11 +195,13 @@ npm i realfish-yct
 
   **Product**
 
-- [RealFishDev Hom](https://realfish-likeview.web.app)
+- [<ins>RealFishDev Hom</ins>](https://realfish-likeview.web.app)
 
-- [Chrome Extension, Realfish View Like](https://chrome.google.com/webstore/search/realfish%20view%20like?authuser=1?authuser=1&gclid=CjwKCAjwzY2bBhB6EiwAPpUpZmzaXPt4vGxm3A_ubGvCZYhmwjFjcNb9k8tyakGaGNWUa5c_TJWfLBoC_c0QAvD_BwE)
+- [<ins>Chrome Extension, Realfish View Like</ins>](https://chrome.google.com/webstore/search/realfish%20view%20like?authuser=1?authuser=1&gclid=CjwKCAjwzY2bBhB6EiwAPpUpZmzaXPt4vGxm3A_ubGvCZYhmwjFjcNb9k8tyakGaGNWUa5c_TJWfLBoC_c0QAvD_BwE)
 
-- [**On Trend Real time update web page**](https://www.ytontrend.com)
+- Link: [<ins>On Trend Real time update web page</inds>](https://www.ytontrend.com)
+
+  - Real time Korea, USA, Japan On Trend Video List, Update List Real Time
 
   **RYCT(RealFish Youtube Trend Video Crawling) LICENSE**
 

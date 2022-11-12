@@ -33,6 +33,7 @@ export class TrendVideoCrawler {
             return (
               item.tabRenderer.title &&
               (item.tabRenderer.title.toLowerCase() === 'now' ||
+                item.tabRenderer.title.toLowerCase() === 'ahora' ||
                 item.tabRenderer.title === '최신')
             );
           }
@@ -64,6 +65,7 @@ export class TrendVideoCrawler {
           for (const item of items) {
             const result: Types.VideoTrendFeedInfo = {
               videoId: item.videoRenderer.videoId,
+              viewCountText: item.videoRenderer.viewCountText.simpleText,
               thumbnail: item.videoRenderer.thumbnail.thumbnails[0].url,
               title: item.videoRenderer.title.runs[0].text,
               channelId:
@@ -80,9 +82,11 @@ export class TrendVideoCrawler {
           // shorts case
           const items =
             contents.shelfRenderer.content.horizontalListRenderer.items;
+
           for (const item of items) {
             const result: Types.VideoTrendFeedInfo = {
               videoId: item.gridVideoRenderer.videoId,
+              viewCountText: item.gridVideoRenderer.viewCountText,
               thumbnail: item.gridVideoRenderer.thumbnail.thumbnails[0].url,
               title: item.gridVideoRenderer.title.runs[0].text,
               channelId:
