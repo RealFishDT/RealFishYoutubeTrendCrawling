@@ -18,6 +18,10 @@ npm i realfish-yct
 - video rank duplicated bug fix, "video" type videos first 2 rank1 ,2 <- it's ok
 - bug 3, 4 rank have 1,2 rank number
 - it's fixed, please use 0.1.9 version
+### version 0.3.0 Release
+- fix exception error because Youtube Trend page have been changed
+- remove channel id in short data object -> trend short page do not provide channel id anymore
+
 
 ## **Support features:**
 
@@ -95,7 +99,6 @@ npm i realfish-yct
         "viewCountText": "4,370,734 views",
         "thumbnail": "https://i.ytimg.com/vi/BKciq4cmElM/hqdefault.jpg?sqp=-oaymwEiCNIBEHZIWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLBu5dbY-85_7lm8DyDZ3NRPLDFTMg",
         "title": "How to Teach Your Dog to Play Dead",
-        "channelId": "UCLjhnUSXzC0F1WU70uQoYcA",
         "rank": 1,
         "type": "shorts"
       },
@@ -121,7 +124,6 @@ npm i realfish-yct
       "viewCountText": "4,370,734 views",
       "thumbnail": "https://i.ytimg.com/vi/BKciq4cmElM/hqdefault.jpg?sqp=-oaymwEiCNIBEHZIWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLBu5dbY-85_7lm8DyDZ3NRPLDFTMg",
       "title": "How to Teach Your Dog to Play Dead",
-      "channelId": "UCLjhnUSXzC0F1WU70uQoYcA",
       "rank": 1,
       "type": "shorts"
     },
@@ -208,7 +210,7 @@ npm i realfish-yct
 - Real Fish ISC
 
 ```
-Copyright (c) 2022 year, Real Fish Inc Content Dev Solutions
+Copyright (c) 2023 year, Real Fish Inc Content Dev Solutions
 
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
 

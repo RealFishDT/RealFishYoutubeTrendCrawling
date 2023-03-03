@@ -2,7 +2,7 @@ export interface VideoTrendFeedInfo {
   videoId: string;
   thumbnail?: string;
   title: string;
-  channelId: string;
+  channelId?: string;
   rank: number;
   viewCountText: string;
   type: 'shorts' | 'video';

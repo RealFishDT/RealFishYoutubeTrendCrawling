@@ -1,6 +1,7 @@
 dist
 src
 test
+samples
 webpack-config
 .eslintignore
 .gitignore
