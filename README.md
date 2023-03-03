@@ -20,7 +20,7 @@ npm i realfish-yct
 - it's fixed, please use 0.1.9 version
 ### version 0.3.0 Release
 - fix exception error because Youtube Trend page have been changed
-- remove channel id in short data object -> trend short page do not provide channel id anymore
+- remove channel id in short data object -> trend page do not provide channel id anymore about shorts 
 
 
 ## **Support features:**

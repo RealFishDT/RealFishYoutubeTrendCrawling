@@ -100,7 +100,6 @@ export class TrendVideoCrawler {
                 }
                 if (type === 'reelShelfRenderer') {
                     // shorts case
-                    console.log(contents)
                     const items =
                         contents.reelShelfRenderer.items;
 
