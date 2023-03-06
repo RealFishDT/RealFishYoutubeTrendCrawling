@@ -13,7 +13,6 @@ export class TrendVideoCrawler {
         this.hl = hl;
         this.localFile = file;
         this.outFile = outfile;
-
     }
     private async getHtml(gl: string, hl: string, file = null) {
         try {
@@ -21,9 +20,9 @@ export class TrendVideoCrawler {
                 const result = await axios.get(
                     `https://www.youtube.com/feed/trending?gl=${gl}&hl=${hl}`
                 );
-                return result.data
+                return result.data;
             } else {
-                const result = await fs.promises.readFile(file, "utf-8")
+                const result = await fs.promises.readFile(file, 'utf-8');
                 return result;
             }
         } catch (error) {
@@ -35,7 +34,7 @@ export class TrendVideoCrawler {
             const regexObj = new RegExp('ytInitialData = ({.*?});', 's');
             const playerInfoMatch = regexObj.exec(data);
             const ytInitialData = JSON.parse(playerInfoMatch[1]);
-            fs.writeFileSync("test2.json", JSON.stringify(ytInitialData))
+            fs.writeFileSync('test2.json', JSON.stringify(ytInitialData));
             const tabs: any[] =
                 ytInitialData.contents.twoColumnBrowseResultsRenderer.tabs;
 
@@ -68,17 +67,18 @@ export class TrendVideoCrawler {
             for (const section of renderSectionContents) {
                 const contents = section.itemSectionRenderer.contents[0];
                 /*const type = contents.shelfRenderer && contents.shelfRenderer.content
-                    .expandedShelfContentsRenderer
-                    ? 'expandedShelfContentsRenderer' // this case is video
-                    : contents.shelfRenderer.content.horizontalListRenderer
-                        ? 'horizontalListRenderer' // this case is shorts
-                        : null;*/
-                const type = contents.shelfRenderer && contents.shelfRenderer.content
-                    .expandedShelfContentsRenderer
-                    ? 'expandedShelfContentsRenderer' // this case is video
-                    : contents.reelShelfRenderer
-                        ? 'reelShelfRenderer' // this case is shorts
-                        : null;
+                            .expandedShelfContentsRenderer
+                            ? 'expandedShelfContentsRenderer' // this case is video
+                            : contents.shelfRenderer.content.horizontalListRenderer
+                                ? 'horizontalListRenderer' // this case is shorts
+                                : null;*/
+                const type =
+                    contents.shelfRenderer &&
+                        contents.shelfRenderer.content.expandedShelfContentsRenderer
+                        ? 'expandedShelfContentsRenderer' // this case is video
+                        : contents.reelShelfRenderer
+                            ? 'reelShelfRenderer' // this case is shorts
+                            : null;
                 if (type === 'expandedShelfContentsRenderer') {
                     const items =
                         contents.shelfRenderer.content.expandedShelfContentsRenderer.items;
@@ -100,15 +100,15 @@ export class TrendVideoCrawler {
                 }
                 if (type === 'reelShelfRenderer') {
                     // shorts case
-                    const items =
-                        contents.reelShelfRenderer.items;
+                    const items = contents.reelShelfRenderer.items;
 
                     for (const item of items) {
                         const result: Types.VideoTrendFeedInfo = {
                             videoId: item.reelItemRenderer.videoId,
                             viewCountText: item.reelItemRenderer.viewCountText,
                             thumbnail: item.reelItemRenderer.thumbnail.thumbnails[0].url,
-                            title: item.reelItemRenderer.accessibility.accessibilityData.label,
+                            title:
+                                item.reelItemRenderer.accessibility.accessibilityData.label,
                             rank: shortsRankNumber,
                             type: 'shorts',
                         };
